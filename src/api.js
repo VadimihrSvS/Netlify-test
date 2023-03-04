@@ -1,6 +1,6 @@
 const express = require("express");
 const serverless = require("serverless-http");
-//const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const _ = require("lodash");
 
 const app = express();
@@ -21,5 +21,9 @@ router.get("/", (req, res) => {
 
 app.use('/.netlify/functions/api', router);
 
-module.exports.handler = serverless(app);
+const handler = serverless(app);
+module.exports.handler = async (event, context) => {
+    const result = await handler(event, context);
+    return result;
+};
 
