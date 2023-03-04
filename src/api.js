@@ -1,7 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 //const mongoose = require("mongoose");
-//const _ = require("lodash");
+const _ = require("lodash");
 
 const app = express();
 const router = express.Router();
